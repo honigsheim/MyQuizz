@@ -1,0 +1,7 @@
+{% extends 'base.html.twig'%}
+{% block title %}Quiz!{% endblock %}{% block body %}{% if bonneRep > 5%}
+
+<h1 class="text">Bravo!</h1>{% elseif bonneRep <= 5 %}
+
+<h1 class="text">Loupé !</h1>{% endif %}<p class="text">Nombre de bonne réponse :
+{{ bonneRep }}/10</p>{% endblock %}

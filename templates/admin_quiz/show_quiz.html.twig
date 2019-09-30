@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quiz{% endblock %}{% block body %}<h1>Quiz</h1><table class="table">
+<tbody>
+    <tr>
+        <th>Id</th>
+        <td>{{ quiz.id }}</td>
+    </tr>
+    <tr>
+        <th>Name</th>
+        <td>{{ quiz.name }}</td>
+    </tr>
+    <tr>
+        <th>Image</th>
+        <td>{{ quiz.image }}</td>
+    </tr>
+    <tr>
+        {% for question in quiz.questions %}
+            <th>Questions</th>
+
+            <td>{{ question }}</td>
+            <tr>
+                {% for reponse in question.reponses %}
+                    <th>Reponses</th>
+                    <td>
+                        <ul>
+                            <li>{{ reponse }}</li>
+
+                        </ul>
+                    </td>
+
+                </tr>
+            </tr>
+        {% endfor %}
+    {%  endfor %}
+
+</tbody></tr></tbody></table></br><a href="{{ path('quiz_edit', {'id': quiz.id}) }}">edit</a><br><a href="{{ path('admin_quiz') }}">Retour a la list</a><form method="post" action="{{ path('quiz_delete', {'id': quiz.id}) }}" onsubmit="return confirm('êtes vous sûre de vouloir supprimer ce quiz ?');"><input name="_method" type="hidden" value="DELETE"><button class="btn btn-danger">Supprimer</button></form>{% endblock %}

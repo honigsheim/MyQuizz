@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block morestylesheets %}
+
+
+<style type="text/css">
+    li * {
+        display: inline-block;
+        margin: 0 10px;
+    }
+</style>{% endblock %}{% block title %}Creating quiz{% endblock %}{% block body %}<div class="container"><div class="example-wrapper">
+{% if editMode %}
+
+    <h1>Modifier le Quiz
+    </h1>
+    {% else%}
+    <h1>Créer un nouveau Quiz</h1>
+{% endif %}</div>{{ form_start(formQuiz)}}<div class=" form-group">
+{{ form_row(formQuiz.name,{'attr':{'placeholder':"Titre du Quiz",'class':'form-control'}}) }}</div><div class=" form-group">
+{{ form_row(formQuiz.categorie,{'attr':{'class':'form-control'}}) }}</div><div class=" form-group">
+{{ form_row(formQuiz.image,{'attr':{'placeholder':"Url de l'image",'class':'form-control'}}) }}</div><button class="btn btn-success" type="submit">
+{% if editMode %}
+    Enregitrer les modifications
+    {% else%}
+    Ajouter le Quiz
+{% endif %}</button>{{ form_end(formQuiz)}}</div></section>{% endblock %}

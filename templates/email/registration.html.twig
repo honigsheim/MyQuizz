@@ -1,0 +1,14 @@
+{% if id == null %}
+    <h3>Bienvenue
+        {{ name }}
+        !</h3>
+    <p>Tu est enregitrer !</p>
+{% else %}
+    <h3>
+        Salut
+        {{ name }}</h3>
+    <p>Vos modifications ont  été enregistrées !</p>
+{% endif %}
+
+Pour te connecter clique
+<a href="{{ url('security_login') }}">ici!</a>.

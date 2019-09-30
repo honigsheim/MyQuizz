@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quiz!{% endblock %}{% block body %}<style>
+.example-wrapper {
+    margin: 1em auto;
+    max-width: 800px;
+    width: 95%;
+    font: 18px / 1.5 sans-serif;
+}
+
+.example-wrapper code {
+    background: #F5F5F5;
+    padding: 2px 6px;
+}</style><div class="example-wrapper">
+<h1>Liste Quizs!
+</h1></div>{% for quiz in quizs %}
+<section class="quiz">
+
+
+    <div class="row">
+        <div class=" col-lg-6 col-md-6 col-sm-12">
+            <article>
+                <h2>
+                    {{ quiz.name }}
+                </h2>
+                <div class="content">
+                    <img style="width: 350px; height: 150px" src="{{quiz.image}}" alt="">
+
+                    <p>
+                        Catégorie
+                        {{ quiz.categorie.name}}
+
+                    </p>
+                    <a href="{{path('quiz_show',{'id':quiz.id})}}" class="btn btn-primary">
+                        Commencer
+                    </a>
+                </div>
+            </article>
+        </div>
+
+
+    </section>
+{% endfor %}{% endblock %}

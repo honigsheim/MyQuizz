@@ -1,0 +1,9 @@
+{% extends 'base.html.twig'%}
+{% block title %}Admin{% endblock %}{% block body %}<div class="container">
+
+<a href="{{path('admin_categorie')}}" class="btn btn-primary">
+    Categorie</a>
+<a href="{{path('admin_quiz')}}" class="btn btn-secondary">
+    Quizs</a>
+<a href="{{path('user')}}" class="btn btn-success">
+    Users</a></div>{% endblock %}

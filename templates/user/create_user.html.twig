@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="example-wrapper">
+    {% if editMode %}
+
+        <h1>Edit User
+        </h1>
+        {% else%}
+        <h1>Créer un nouveau User</h1>
+    {% endif %}
+
+
+</div>
+
+
+{{ form_start(form) }}
+
+<div class=" form-group">
+    {{ form_row(form.email,{'attr':{'placeholder':"Entrer votre email !",'class':'form-control'}}) }}
+</div>
+
+<div class=" form-group">
+    {{ form_row(form.username,{'attr':{'placeholder':"Entrer votre username !",'class':'form-control'}}) }}
+</div>
+
+<div class=" form-group">
+    {{ form_row(form.password,{'attr':{'placeholder':"Entrer votre mot de passe !",'class':'form-control',}}) }}
+
+</div>
+
+<div class=" form-group">
+    {{ form_row(form.roles,{'attr':{'class':'form-control'}})
+                                    }}
+
+</div>
+
+<button class="btn btn-success" type="submit">Valider</button>
+
+
+{{ form_end(form) }}
+
+<a href="{{ path('user') }}">Revenir a la list des users
+</a>{% endblock %}

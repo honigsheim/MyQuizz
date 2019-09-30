@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}{% block body %}<h1>List Users</h1><table class="table">
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>Email</th>
+        <th>Username</th>
+        <th>Roles</th>
+        <th>actions</th>
+    </tr>
+</thead>
+<tbody>
+    {% for user in users %}
+        <tr>
+            <td>{{ user.id }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.roles[0] }}</td>
+            <td>
+
+
+                <a href="{{ path('user_show', {'id': user.id}) }}" class="btn btn-primary">show</a>
+                <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-success">edit</a>
+                <a href="{{ path('user_delete', {'id': user.id}) }}" class="btn btn-danger">Supprimer</a>
+
+
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="6">Pas de resultas !</td>
+        </tr>
+    {% endfor %}
+
+</tbody></table><a href="{{ path('user_new') }}" class="btn btn-secondary">Create new</a>{% endblock %}

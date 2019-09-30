@@ -1,0 +1,41 @@
+{% extends 'base.html.twig'%}
+{% block title %}
+Quiz!{% endblock %}{% block body %}<div class=" col-lg-6 col-md-12 col-sm-12">
+<article>
+    <h2>
+        {{categorie.name}}</h2>
+    <div class="metadata">
+        <div class=" row box_image justify-content-center">
+            <img style="width: 350px; height: 150px" src="{{ categorie.image }}" alt="{{ categorie.name }}">
+        </div>
+
+
+        titre du quiz
+        {% for quiz in categorie.quizzes %}
+            {{ quiz.name}}
+
+            <div class="content">
+
+                {% for question in categorie.questions %}
+                    <h5 class="card-header">{{question.question}}
+                    </h5>
+                    <ul>{# {% for reponse in question.reponse %}
+                                                                                                                                                                                                                                                                                                                                                        <li class="list__item">
+                                                                                                                                                                                                                                                                                                                                                            <input name="next" value="{{ reponse.reponse}}" hidden>
+                                                                                                                                                                                                                                                                                                                                                            <input name="bonneRep" value="{{ reponse.reponse}}" hidden>
+                                                                                                                                                                                                                                                                                                                                                            <input type="radio" class="radio-btn" name="answer" id="{{ reponse.id }}" value="{{ reponse.id }}"/>
+                                                                                                                                                                                                                                                                                                                                                            <label for="{{ reponse.id }}" class="label">{{ reponse.reponse }}</label>
+                                                                                                                                                                                                                                                                                                                                                        </li> #}
+
+
+                        {# {% endfor %} #}
+                    </ul>
+                {% endfor %}
+
+            {% endfor %}
+        </div>
+
+        {# <a href="{{path('categorie_show',{'id':categorie.quiz.id})}}" class="btn btn-primary"> #}
+        Voir le Quiz
+    </a>
+</div></article></div>{% endblock %}

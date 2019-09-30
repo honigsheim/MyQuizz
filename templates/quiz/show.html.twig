@@ -1,0 +1,68 @@
+{% extends 'base.html.twig'%}
+{% block title %}Quiz!{% endblock %}{% block body %}<h2>
+{{quiz.name}}</h2>Catégorie{{ quiz.categorie.name}}<div class=" row box_image justify-content-center">
+<img style="width: 350px; height: 150px" src="{{ quiz.image }}" alt="{{ quiz.name }}"></div>{% if rep == null %}
+<div class="card">
+    <h5 class="card-header">{{ quiz.questions[compteur].question }}</h5>
+
+
+    <div class="card-body">
+
+        <form method="POST">
+            <ul class="list">
+                {% for reponses in quiz.questions[compteur].reponses %}
+                    <li class="list__item">
+                        <input name="next" value="{{ compteur }}" hidden>
+                        <input name="bonneRep" value="{{ bonneRep }}" hidden>
+                        <input type="radio" class="radio-btn" name="rep" id="{{ reponses.id }}" value="{{ reponses.id }}"/>
+                        <label for="{{ reponses.id }}" class="label">{{ reponses.reponse }}</label>
+                    </li>
+
+
+                {% endfor %}
+            </ul>
+
+            <div class="row justify-content-center">
+                <button class="btn btn-success" type="submit">Valider</button>
+            </div>
+
+        {% else %}
+
+            {% if yes == true %}
+
+
+                <div class="row justify-content-center">
+                    <h5 class="message">{{ message }}</h5>
+                </div>
+
+            {% else %}
+
+                {% for reponses in quiz.questions[compteur].reponses %}
+
+                    {% if reponses.ReponseExpected == true %}
+                        <h3>Mauvaise reponse !</h3>
+
+
+                        <div class="row justify-content-center">
+
+
+                            <h5>la bonne réponse est :
+                                {{ reponses.reponse }}</h5>
+                        </div>
+
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            <div class="row justify-content-center">
+
+                <form method="post">
+                    <input name="next" value="{{ compteur }}" hidden>
+                    <input name="bonneRep" value="{{ bonneRep }}" hidden>
+                    <button class="btn btn-success" type="submit">Question suivante</button>
+                </form>
+            </div>
+
+        {% endif %}
+
+    </div>
+</div>{% endblock %}

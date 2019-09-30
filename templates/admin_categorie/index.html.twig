@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserController!{% endblock %}{% block body %}<h1>List categorie</h1><table class="table">
+<thead>
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Image</th>
+
+    </tr>
+</thead>
+<tbody>
+    {% for categorie in categories %}
+        <tr>
+            <td>{{ categorie.id }}</td>
+            <td>{{ categorie.name }}</td>
+            <td>{{ categorie.image }}</td>
+            <td>
+                <a href="{{ path('categorie_show', {'id': categorie.id}) }}" class="btn btn-primary">Show</a>
+                <a href="{{ path('categorie_edit', {'id': categorie.id}) }}" class="btn btn-success">Edit</a>
+                <p></p>
+                <a href="{{ path('categorie_delete', {'id': categorie.id}) }}" class="btn btn-danger">Supprimer</a>
+
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="6">Pas de resultas !</td>
+        </tr>
+    {% endfor %}
+
+</tbody></table><a href="{{ path('categorie_new') }}" class="btn btn-secondary">Create new</a>{% endblock %}

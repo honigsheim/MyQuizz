@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}User{% endblock %}{% block body %}<h1>User</h1><table class="table">
+<tbody>
+    <tr>
+        <th>Id</th>
+        <td>{{ user.id }}</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>{{ user.email }}</td>
+    </tr>
+    <tr>
+        <th>Username</th>
+        <td>{{ user.username }}</td>
+    </tr>
+    <tr>
+        <th>Password</th>
+        <td>{{ user.password }}</td>
+    </tr>
+    <tr>
+        <th>Roles</th>
+        <td>{{ user.roles[0] }}</td>
+    </tr>
+</tbody></table></br><p><a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-success">edit</a></p><p><a href="{{ path('user') }}" class="btn btn-primary">Retour a la list</a><form method="post" action="{{ path('user_delete', {'id': user.id}) }}" onsubmit="return confirm('êtes vous sûre de vouloir supprimer cet étulisateur ?');">
+<input name="_method" type="hidden" value="DELETE">
+<button class="btn btn-danger">Supprimer</button></form></p>{% endblock %}
